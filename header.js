@@ -1,8 +1,8 @@
 $(document).ready(function(){
-$("#header-items li").mouseenter(function () {
+$("#header > ul > li").mouseenter(function () {
 $(this).children().show();
 });
-$("#header-items li").mouseleave(function () {
+$("#header > ul > li").mouseleave(function () {
 	$(this).children().hide();
 	});
 });
