@@ -22,7 +22,7 @@
 				echo "<p>Debugging error: " . mysqli_connect_error() . PHP_EOL."</p>";
 				exit;
 			    }
-    $sql = "UPDATE employee SET hashed_pass = ?";
+    $sql = "UPDATE employee SET hashed_pass = ? WHERE id=$id";
     if($stmt = $db->prepare($sql)){
         $salt_stmt = "SELECT salt FROM employee WHERE username = $_SESSION['username']";
         $salt_stmt->bind_result($salt);
