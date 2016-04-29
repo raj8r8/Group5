@@ -22,7 +22,7 @@
 				echo "<p>Debugging error: " . mysqli_connect_error() . PHP_EOL."</p>";
 				exit;
 			    }
-    $sql = "UPDATE employee SET name_first = ?";
+    $sql = "UPDATE employee SET name_first = ? WHERE id=$id";
     if($stmt = $db->prepare($sql)){
         
         $stmt->bind_param('s', $name_first);
