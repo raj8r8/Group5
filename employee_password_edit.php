@@ -28,7 +28,7 @@
         $salt_stmt->bind_result($salt);
         $salt_stmt->execute();
         
-        $hpass = password_hash($salt . $_POST['password'], PASSWORD_BCRYPT) or die (Connection Error " . mysqli_error($con));
+        $hpass = password_hash($salt . $_POST['password'], PASSWORD_BCRYPT) or die (Connection Error " . mysqli_error($con)");
         
         $stmt->bind_param('s', $hpass);
     
