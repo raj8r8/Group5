@@ -11,15 +11,14 @@ text-align: center;
 }
 </style>
 <script>
-$(document).ready(function(){
-                  var original = $("#content").html();
-                  $("#loader").load("header.html");
-                  });
+    $(document).ready(function(){
+        //var original = $("#content").html();
+        $("#header").load("header.php");
+     });
 </script>
 </head>
 <body>
-<header id="loader">
-</header>
+<header id="header"></header>
 <div id="content">
 <form method='POST' action='checkout.php'>
 <h1>Checkout</h1>

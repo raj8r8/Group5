@@ -12,9 +12,9 @@ text-align: center;
 </style>
 <script>
 $(document).ready(function(){
-									var original = $("#content").html();
-									$("#loader").load("header.html");
-									});
+	var original = $("#content").html();
+	$("#loader").load("header.php");
+});
 </script>
 </head>
 <body>
