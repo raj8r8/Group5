@@ -37,14 +37,13 @@ body {
 			echo "</table>";
 		}
 		// check if it is admin user
-		else if($user_type == "1")
-		{
-					header("location: adminuser.php");
+		else if($user_type == "1"){
+			header("location: adminuser.php");
+		} else if($user_type == "2"){
+			header("location: topadminuser.php");
+		}else{
+			echo "Login in error";
 		}
-
-			else{
-				echo "Login in error";
-			}
 		// show user business plan information
 		$myUser = new MyUser("localhost", "root", "123456", "Project");
 		$myUser->connect();
