@@ -62,7 +62,7 @@
                         <li>Check In</li>
                         <li><a href="checkout.php">Check Out</a></li>
                         <li><a href="test.html">Edit Items</a></li>
-                        <li><a href="items.php">View All Items</a></>
+                        <li><a href="items.php">View All Items</a><li/>
                         <li><a href="transactions.php">All Transactions</a></li>
                     </ul>
                 </li>
