@@ -17,7 +17,7 @@ text-align: center;
         <div class="col-md-4 col-sm-4 col-xs-3"></div>
         <div class="col-md-4 col-sm-4 col-xs-6">
           <h2>Employee Login</h2>
-          <form action="VerifyLogin.php" method="POST">
+          <form action="verifylogin.php" method="POST">
             <div class="row form-group">
                 <input class='form-control' type="text" name="username" placeholder="username">
             </div>
