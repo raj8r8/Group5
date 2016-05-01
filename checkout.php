@@ -141,12 +141,12 @@ $(document).ready(function(){
                 echo "<p>Error because of ".mysqli_stmt_error($statement2)."</p>";
                 exit;
             }
-            echo "<p>".mysqli_stmt_affected_rows($statement2)."</p>";
+            //echo "<p>".mysqli_stmt_affected_rows($statement2)."</p>";
             mysqli_stmt_close($statement2);
             
-            /* Navigate to transactions.php
+            /* Navigate to transactions.php */
             header("Location: /transactions.php");
-            */
+            
         }
         else{
           echo "<p>".mysqli_stmt_error($statement2)."</p>";
