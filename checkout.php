@@ -112,9 +112,23 @@ $(document).ready(function(){
           echo "<p>".mysqli_stmt_error($statement1)."</p>";
           
       }
+      echo "<p>".$categoryid."</p>";
+      switch($categoryid){
+        case 1:
+         $query2 = "INSERT INTO student_item_transaction
+        VALUES(DEFAULT,?,1,1,?,?,NOW(),NULL, NOW() + INTERVAL 2 HOUR,0)";
+        break;
+        case 2:
+          $query2 = "INSERT INTO student_item_transaction
+          VALUES(DEFAULT,?,1,1,?,?,NOW(),NULL,CONCAT(CURDATE(), ' 23:45:00'),0)";
+          break;
+          case 3:
+            $query2 = "INSERT INTO student_item_transaction
+            VALUES(DEFAULT,?,1,1,?,?,NOW(),NULL,CONCAT(CURDATE(), ' 23:00:00'),0)";
+            break;
+      }
         
-        $query2 = "INSERT INTO student_item_transaction
-        VALUES(DEFAULT,?,1,1,?,?,NOW(),NULL,NULL,0)";
+ 
         $statement2 = mysqli_stmt_init($con);
    
         if (mysqli_stmt_prepare($statement2, $query2)) {
