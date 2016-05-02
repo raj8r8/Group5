@@ -7,6 +7,7 @@
 <?php
     $login_information = "Please enter username and password to login";
     $has_login = false;
+    $_SESSION["loggedin"] = false;
     // start the session
     session_start();
     if (!isset($_SERVER['HTTPS']) || !$_SERVER['HTTPS']) { // if request is not secure, redirect to secure url
@@ -21,6 +22,7 @@
     }
     if(isset($user_name)){
     $has_login = true;
+    $_SESSION["loggedin"] = true;
     }
     else
     {
@@ -50,6 +52,7 @@
             // chech the password validation
             if(password_verify($salt.$password, $pwhash)){
                 $has_login = true;
+                $_SESSION["loggedin"] = true;
                 // store the login information to the session
                 $_SESSION["username"] = $row0[3];
                 $_SESSION["id"] = $row0[4];
