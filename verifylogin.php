@@ -19,9 +19,6 @@
     if(isset($_SESSION["username"])){
     $user_name = $_SESSION["username"];
     }
-    //	if(isset($_SESSION["user_type"]))
-    //	$user_type = $_SESSION["user_type"];
-    
     if(isset($user_name)){
     $has_login = true;
     }
@@ -57,7 +54,8 @@
                 $_SESSION["username"] = $row0[3];
                 $_SESSION["id"] = $row0[4];
                 $_SESSION["level"] = $row0[2];
-                       $level = $row0[2];
+                $_SESSION["location"] = $_POST["location"];
+                $level = $row0[2];
             }
             else{
                 // username of password must be wrong
