@@ -2,8 +2,7 @@
 <html>
 		<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-		<link href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet"></link>
-		<script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+		  <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 		<title>All Items</title>
 		<style>
 		h1{
@@ -49,7 +48,7 @@
 		//get each row
 		while($row = mysqli_fetch_row($result)) {
 			echo "<tr>";
-			echo "<td><form method='POST' action='edititems.php'><input type='hidden' name='id' value='".$row[0]."'/><button type='submit'>Edit</button></form></td>";
+			echo "<td><form method='POST' action='edit.php'><input type='hidden' name='id' value='".$row[0]."'/><button type='submit'>Edit</button></form></td>";
 			//make each cell 
 			foreach($row as $key => $var) {
 				echo "<td>".$var."</td>";

@@ -23,7 +23,6 @@
     //	$user_type = $_SESSION["user_type"];
     
     if(isset($user_name)){
-         echo "<p>hit</p>";
     $has_login = true;
     }
     else
@@ -31,7 +30,6 @@
         // check if we have got someting from the html form
         if(isset($_POST['username']) && isset($_POST['password']))
         {
-            echo "<p>hit</p>";
             $user_name = $_POST['username'];
             $password = $_POST['password'];
             $db = mysqli_connect("localhost", "public", "P@ssword", "Project")

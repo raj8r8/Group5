@@ -81,6 +81,8 @@ $(document).ready(function(){
 									}
 										$result1 = mysqli_stmt_get_result($statement1);
 										mysqli_stmt_close($statement0);
+										/* Navigate to transactions.php */
+										header("Location: transactions.php");
 							
 
 		}

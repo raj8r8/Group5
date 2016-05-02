@@ -5,9 +5,14 @@ body{
 div#content{
 margin-top: 7em;
 position: absolute;
+width: 100%;
 }
 a:hover{
     cursor: pointer;
+    color: #000000;
+}
+h1{
+    font-size: 2em;
 }
 a{
     color: #000000;

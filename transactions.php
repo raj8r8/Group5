@@ -2,8 +2,7 @@
 <html>
 		<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-		<link href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet"></link>
-		<script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+		  <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 		<title>All Transactions</title>
 		<style>
 		h1{
@@ -17,6 +16,9 @@
 			text-align: center;
 		}
 		</style>
+		<script>
+		$("#loader").load("header.html");
+		</script>
 		</head>
 		<body>
 		<header id="loader">
@@ -65,7 +67,7 @@
 		</div>
 		</body>
 		<script>
-				$(document).ready(function(){
+		$(document).ready(function(){
 				$("#loader").load("header.html");
 												 
 				 $('#items').DataTable({
