@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if user isn't logged in
-    header("Location: /"); // go to Login page
+    header("Location: ./index.php"); // go to Login page
 }
 ?>
 <html>
