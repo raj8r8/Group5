@@ -40,18 +40,6 @@
 			<label>Password:</label>
 			<input id="password" size="30" name="password" type="text">	
 			<br/>		　　
-			<button type="submit">Submit</button>
-			</form>
-
-		<div id="content">
-			<h1>Login</h1>
-			<form method="POST" action="verifylogin.php" id="login_form" >
-			<label>Username:</label>
-			<input id="username" size="30" name="username" type="text">
-			<br/>
-			<label>Password:</label>
-			<input id="password" size="30" name="password" type="text">	
-			<br/>		　　
 			<select name="location">
 			<?php
 				$con= mysqli_connect("localhost","public","P@ssword","Project");
