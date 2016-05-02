@@ -67,7 +67,7 @@
 		<script>
 				$(document).ready(function(){
 				var original = $("#content").html();
-				$("#loader").load("header.php");
+				$("#loader").load("header.html");
 												 
 				 $('#items').DataTable();
 			});

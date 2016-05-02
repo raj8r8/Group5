@@ -13,7 +13,7 @@ text-align: center;
 <script>
 $(document).ready(function(){
 	var original = $("#content").html();
-	$("#loader").load("header.php");
+	$("#loader").load("header.html");
 });
 </script>
 </head>
