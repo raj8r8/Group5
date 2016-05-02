@@ -66,10 +66,11 @@
 		</body>
 		<script>
 				$(document).ready(function(){
-				var original = $("#content").html();
 				$("#loader").load("header.html");
 												 
-				 $('#items').DataTable();
+				 $('#items').DataTable({
+					"order": [[ 7, "asc" ]]
+				});
 			});
 		</script>
 				

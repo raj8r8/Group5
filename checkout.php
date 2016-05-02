@@ -12,7 +12,6 @@ text-align: center;
 </style>
 <script>
     $(document).ready(function(){
-        //var original = $("#content").html();
         $("#header").load("header.html");
      });
 </script>
@@ -144,7 +143,7 @@ text-align: center;
             mysqli_stmt_close($statement2);
             
             /* Navigate to transactions.php */
-            header("Location: /transactions.php");
+            header("Location: transactions.php");
             
         }
         else{

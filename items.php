@@ -12,6 +12,7 @@
 		th{
 			text-align: center;
 		}
+
 		td{
 			text-align: center;
 		}
@@ -39,25 +40,21 @@
 		$fieldinfo=mysqli_fetch_fields($result);
 		//create table
 		echo "<table class='table table-hover' id='items'><thead>";
+		echo "<th>Edit</th>";
 		//create the header for each column
 		foreach ($fieldinfo as $value) {
 			echo "<th>".$value->name."</th>";
 		}
 		echo "</thead><tbody>";
 		//get each row
-		foreach($result as $row) {
-			echo "<form action = 'Edit.php' method = 'POST'>";
-            echo "<tr>";
+		while($row = mysqli_fetch_row($result)) {
+			echo "<tr>";
+			echo "<td><form method='POST' action='edititems.php'><input type='hidden' name='id' value='".$row[0]."'/><button type='submit'>Edit</button></form></td>";
 			//make each cell 
-            echo '<td><button type="submit" name="edit">Edit</button>';
 			foreach($row as $key => $var) {
 				echo "<td>".$var."</td>";
-                echo "<input type = 'hidden' name = $array[$i] value = $key>";
-                $i++;
 			}
 			echo "</tr>";
-            $i=0;
-            echo "</form>"
 		}
 		echo  "</tbody></table>";
 		
@@ -65,13 +62,14 @@
 		mysqli_free_result($result);
 		//close mysql connection
 		mysqli_close($con);
+
 		?>
 		</div>
 		</body>
 		<script>
 				$(document).ready(function(){
 				var original = $("#content").html();
-				$("#loader").load("header.php");
+				$("#loader").load("header.html");
 												 
 				 $('#items').DataTable();
 			});

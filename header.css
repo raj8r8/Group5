@@ -70,8 +70,10 @@ ul#header-items {
 }
 li#logout a{
      color: #ffbf00;
+    display: inline;
 }
 li#logout a:hover{
      color: #ffbf00;
+    display: inline;
 
 }
