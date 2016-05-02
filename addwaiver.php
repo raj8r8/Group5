@@ -43,12 +43,12 @@ text-align: center;
         }
 
         if ( isset($_POST["hasBikeShare"]) && $_POST["hasBikeShare"] == true ) {
-          $sql = "INSERT INTO student_has_waiver (student_id, waiver_id) VALUES ('$studentid', '1')";
+          $sql = "INSERT INTO student_has_waiver (student_id, waiver_id) VALUES (?, 1)";
 
           $statement1 = mysqli_stmt_init($con);
           if (mysqli_stmt_prepare($statement1, $sql)) {
             /* bind parameters for markers */
-            mysqli_stmt_bind_param($statement1, "sd", $item,$location);
+            mysqli_stmt_bind_param($statement1, "d", $studentid);
             /* execute query */
             mysqli_stmt_execute($statement1);
             if(mysqli_stmt_error($statement1) != ""){
@@ -59,25 +59,20 @@ text-align: center;
           }
           else{
             echo "<p>".mysqli_stmt_error($statement1)."</p>";
-            
           }
 
-          $result1 = mysqli_stmt_get_result($statement1);
-
-          if ($result1 == true) {
-              echo "$studentid submitted a bike waiver";
-          } else {
-              echo "Error: " . $sql . "<br>" . $con->error;
-          }
+          if (mysqli_stmt_affected_rows($statement1) == 1) {
+            echo "<p>Your waiver has been successfully submitted</p>";
+          } 
         }
 
         if ( isset($_POST["hasJournalism"]) && $_POST["hasJournalism"] == true ) {
-          $sql = "INSERT INTO student_has_waiver (student_id, waiver_id) VALUES ('$studentid', '2')";
+          $sql = "INSERT INTO student_has_waiver (student_id, waiver_id) VALUES (?, 2)";
 
           $statement2 = mysqli_stmt_init($con);
           if (mysqli_stmt_prepare($statement2, $sql)) {
             /* bind parameters for markers */
-            mysqli_stmt_bind_param($statement2, "sd", $item,$location);
+            mysqli_stmt_bind_param($statement2, "d", $studentid);
             /* execute query */
             mysqli_stmt_execute($statement2);
             if(mysqli_stmt_error($statement2) != ""){
@@ -91,13 +86,9 @@ text-align: center;
             
           }
 
-          $result2 = mysqli_stmt_get_result($statement2);
-
-          if ($result2 == true) {
-              echo "$studentid submitted a journalism equipment waiver";
-          } else {
-              echo "Error: " . $sql . "<br>" . $con->error;
-          }
+          if (mysqli_stmt_affected_rows($statement2) == 1) {
+             echo "<p>Your waiver has been successfully submitted</p>";
+          } 
         }
 
         mysqli_close($con);
