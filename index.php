@@ -1,11 +1,16 @@
-<!DOCTYPE html>
   <?php
-    if (!isset($_SERVER['HTTPS']) || !$_SERVER['HTTPS']) {
-      $url = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-      header('Location: ' . $url);
-    }
+	if (!isset($_SERVER['HTTPS']) || !$_SERVER['HTTPS']) {
+		$url = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		header('Location: ' . $url);
+	}
+    
+	session_start();
+	
+	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { // if user is logged in
+	    header("Location: /checkout.php"); // go to checkout page
+	}
 ?>
-
+<!DOCTYPE html>
 <html>
 	<head>
 	<meta charset="UTF-8">
