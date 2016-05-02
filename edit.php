@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if user isn't logged in
+    header("Location: /"); // go to Login page
+}
+?>
 <html>
     <head>
     <meta charset="UTF-8">
