@@ -7,7 +7,7 @@
 	session_start();
 	
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { // if user is logged in
-	    header("Location: /checkout.php"); // go to checkout page
+	    header("Location: ./checkout.php"); // go to checkout page
 	}
 ?>
 <!DOCTYPE html>
