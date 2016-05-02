@@ -9,7 +9,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-<title>Checkout</title>
+<title>Add Waiver</title>
 <style>
 #content{
 width: 100%;
@@ -26,7 +26,7 @@ text-align: center;
 <header id="header"></header>
 <div id="content">
 <form method='POST' action='addwaiver.php'>
-<h1>Checkout</h1>
+<h1>Add Waiver</h1>
 <?php
     if(!empty($_POST["studentid"]) && (!empty($_POST["hasBikeShare"]) || !empty($_POST["hasJournalism"])) ) {
      
