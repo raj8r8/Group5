@@ -64,3 +64,14 @@ ul#header-items {
 .dropdown li{
     clear: both;
 }
+
+#header ul#header-items li#logout{
+    float:right;
+}
+li#logout a{
+     color: #ffbf00;
+}
+li#logout a:hover{
+     color: #ffbf00;
+
+}

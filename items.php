@@ -40,6 +40,7 @@
 		$fieldinfo=mysqli_fetch_fields($result);
 		//create table
 		echo "<table class='table table-hover' id='items'><thead>";
+		echo "<th>Edit</th>";
 		//create the header for each column
 		foreach ($fieldinfo as $value) {
 			echo "<th>".$value->name."</th>";
@@ -48,6 +49,7 @@
 		//get each row
 		while($row = mysqli_fetch_row($result)) {
 			echo "<tr>";
+			echo "<td><form method='POST' action='edititems.php'><input type='hidden' name='id' value='".$row[0]."'/><button type='submit'>Edit</button></form></td>";
 			//make each cell 
 			foreach($row as $key => $var) {
 				echo "<td>".$var."</td>";
@@ -67,7 +69,7 @@
 		<script>
 				$(document).ready(function(){
 				var original = $("#content").html();
-				$("#loader").load("header.php");
+				$("#loader").load("header.html");
 												 
 				 $('#items').DataTable();
 			});
