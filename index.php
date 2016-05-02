@@ -16,7 +16,7 @@
 		<script>
 		$(document).ready(function(){
 	          $("#header").load("header.php");
-	          $("#content").load("verifylogin.php");
+	          $("#content").load("VerifyLogin.php");
          });
 		</script>
 		<style>
