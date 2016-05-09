@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if user isn't logged in
-    header("Location: /index.php"); // go to Login page
+    header("Location: ./index.php"); // go to Login page
 }
 ?>
 <!DOCTYPE html>
@@ -54,7 +54,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		//get each row
 		while($row = mysqli_fetch_row($result)) {
 			echo "<tr>";
-			echo "<td><form method='POST' action='edit.php'><input type='hidden' name='id' value='".$row[0]."'/><button type='submit'>Edit</button></form></td>";
+			echo "<td><form method='POST' action='edit.php'><input type='hidden' name='id' value='".$row[0]."'/><button type='submit' class='btn btn-info'>Edit</button></form></td>";
 			//make each cell 
 			foreach($row as $key => $var) {
 				echo "<td>".$var."</td>";

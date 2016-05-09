@@ -38,7 +38,7 @@
 			<input id="username" size="30" name="username" type="text">
 			<br/>
 			<label>Password:</label>
-			<input id="password" size="30" name="password" type="text">	
+			<input id="password" size="30" name="password" type="password">	
 			<br/>		　　
 			<select name="location">
 			<?php
@@ -75,6 +75,7 @@
 					
 				}
 				mysqli_stmt_close($statement1);
+				mysqli_close($con);
 				?>
 			</select><br/>
 						<button type="submit">Submit</button>

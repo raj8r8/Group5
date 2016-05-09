@@ -24,12 +24,22 @@ text-align: center;
 </head>
 <body>
 <header id="header"></header>
+<style>
+  fieldset{
+    text-align: center;
+    margin: auto;
+  }
+</style>
 <div id="content">
+<div class="row">
+<div class="col-md-4 col-sm-4 col-xs-3"></div>
+<div class="col-md-4 col-sm-4 col-xs-3">
 <form method='POST' action='checkout.php'>
 <h1>Checkout</h1>
 <?php
 if(!empty($_POST["verify"])){
       $con= mysqli_connect("localhost","public","P@ssword","Project");
+     
 $categoryid = $_SESSION["categoryid"];
 $itemid = $_SESSION["itemid"];
 $studentid = $_SESSION["studentid"];
@@ -107,7 +117,11 @@ $studentid = $_SESSION["studentid"];
               $result0 = mysqli_stmt_get_result($statement0);
               $row0 = mysqli_fetch_array($result0, MYSQLI_NUM);
               $itemid = $row0[0];
-                 $_SESSION["itemid"] = $itemid;
+              if(empty($itemid)){
+                echo "<p>Sorry there is no item with that id please try again";
+                exit;
+              }
+              $_SESSION["itemid"] = $itemid;
                 
               mysqli_stmt_close($statement0);
              $query4 = "SELECT COUNT(*) FROM student_item_transaction
@@ -197,7 +211,7 @@ $studentid = $_SESSION["studentid"];
             }
               $result3= mysqli_stmt_get_result($statement3);
               $row3 = mysqli_fetch_array($result3, MYSQLI_NUM);
-              echo "<p>Student Name: ".$row3[0]." ".$row3[1]."</p><input name='verify' type='submit' value='Submit'></fieldset>";
+              echo "<p>Student Name: ".$row3[0]." ".$row3[1]."</p><input name='verify' class='btn btn-primary' type='submit' value='Submit'></fieldset>";
       
         $query1 = "SELECT item_condition.id FROM item_condition_update
         INNER JOIN item
@@ -219,7 +233,7 @@ $studentid = $_SESSION["studentid"];
             $result1 = mysqli_stmt_get_result($statement1);
             $row1 = mysqli_fetch_array($result1, MYSQLI_NUM);
             $condtionid = $row1[0];
-               $_SESSION["conditionid"] = $condtionid;
+            $_SESSION["conditionid"] = $condtionid;
             mysqli_stmt_close($statement1);
         }
         else{
@@ -230,11 +244,14 @@ $studentid = $_SESSION["studentid"];
     }
     
     else{
-        echo "<label>Enter in an item name:</label><input type='text' size='30' name='itemid'></input><br/><label>Enter in a student ID:</label><input type='text' size='30' name='studentid'/><br/><button type='submit' class='btn btn-default'>Check Out</button>";
-        
+        ?>
+        <label>Enter in an item name:</label><input class="form-control" type='text' size='30' name='itemid'></input><br/><label>Enter in a student ID:</label><input type='text' class="form-control" size='30' name='studentid'/><br/><button type='submit' class='btn btn-primary'>Check Out</button>
+ <?php       
     }
     ?>
 </form>
+</div>
+</div>
 </div>
 </body>
 

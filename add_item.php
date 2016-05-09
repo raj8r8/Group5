@@ -156,7 +156,7 @@ text-align: center;
 </select>
 </div>
 <div class="row form-group">
-<input class=" btn btn-info" type="submit" name="submit" value="Submit item"/>
+<input class=" btn btn-primary" type="submit" name="submit" value="Add Item"/>
 </div>
 </form>
 <?php

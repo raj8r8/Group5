@@ -9,7 +9,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		  <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-		<title>All Transactions</title>
+		<title>Overdue Items</title>
 		<style>
 		h1{
 			text-align: center;
@@ -30,7 +30,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		<header id="loader">
 		</header>
 		<div id="content">
-		<h1>All Transactions</h1>
+		<h1>Overdue Items</h1>
 <?php 
 		
 			$con= mysqli_connect("localhost","public","P@ssword","Project");
@@ -41,7 +41,8 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 				echo "<p>Debugging error: " . mysqli_connect_error() . PHP_EOL."</p>";
 				exit;
 			    }
-			$query = 'SELECT * FROM transaction_info';
+			$query = 'SELECT * FROM transaction_info
+			WHERE `transaction_info`.`Checked In Time` IS NULL AND `transaction_info`.`Fine` != 0;';
 		//run the query
 		$result=mysqli_query($con,$query);
 		// Get number of columns from result

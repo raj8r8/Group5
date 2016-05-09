@@ -29,13 +29,18 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
     
 
        <div id="content">
+    <div class="row">
+    <div class="col-md-4 col-sm-4 col-xs-3"></div>
+        <div class="col-md-4 col-sm-4 col-xs-6" id="container">
     <h1>Edit An Item</h1>
+
             <form action="item_edit.php" id="edit" method="POST">
-                <label>ID:</label><input type="text" name="id" readonly="readonly" value="<?=$_POST["id"]?>">
+                <label>ID:</label><input class="form-control" type="text" name="id" readonly="readonly" value="<?=$_POST["id"]?>">
                 <br/>
-               <label>Name:</label><input type="text" name="name">
+               <label>Name:</label><input class="form-control" type="text" name="name">
                  <br/>
                 <label>Condition:</label>
+                <div class="row form-group">
        <select class='form-control' name="item_condition" id= "item_condition">
     <?php
         $con= mysqli_connect("localhost","public","P@ssword","Project");
@@ -73,6 +78,8 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
         mysqli_stmt_close($statement1);
         ?>
     </select>
+        </div>
+           <div class="row form-group">
                  <br/>
                 <label>Category:</label>
            <select class='form-control' name="item_category" id="item_category">
@@ -108,10 +115,13 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
             }
             mysqli_stmt_close($statement0); ?>
         </select>
+            </div>
         
                  <br/>
             <input type="submit" name="submit" value="Submit">
             </form>
+            </div>
+            </div>
         </div>
     </body>
     

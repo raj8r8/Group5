@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Where's this show</title>
+<title></title>
 
 </head>
 <?php
@@ -34,7 +34,8 @@
             $db = mysqli_connect("localhost", "public", "P@ssword", "Project")
             or die("Connect Error " . mysqli_error($link));
             
-            $sql_query = 'SELECT employee.salt, employee.hashed_pass, employee_has_permissions.permissions_id, employee.username, employee.id 
+            $sql_query = 'SELECT employee.salt, employee.hashed_pass, employee_has_permissions.permissions_id,
+             employee.username, employee.id,employee.name_first,employee.name_last
             FROM employee 
             INNER JOIN employee_has_permissions
             ON employee.id=employee_has_permissions.employee_id 
@@ -56,6 +57,7 @@
                 // store the login information to the session
                 $_SESSION["username"] = $row0[3];
                 $_SESSION["id"] = $row0[4];
+                $_SESSION["employeeName"] = $row0[5]." ".$row0[6];
                 $_SESSION["level"] = $row0[2];
                 $_SESSION["location"] = $_POST["location"];
                 $level = $row0[2];
