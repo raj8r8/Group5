@@ -23,7 +23,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		}
 		</style>
 		<script>
-		$("#loader").load("header.html");
+		$("#loader").load("header.php");
 		</script>
 		</head>
 		<body>
