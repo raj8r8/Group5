@@ -17,7 +17,6 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		th{
 			text-align: center;
 		}
-
 		td{
 			text-align: center;
 		}
@@ -28,10 +27,10 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		</header>
 		<div id="content">
 		<h1>All Items</h1>
-<?php 
-		
+<?php
+
 			$con= mysqli_connect("localhost","public","P@ssword","Project");
-			
+
 			if (!$con) {
 				echo "<p>Error: Unable to connect to MySQL." . PHP_EOL."</p>";
 				echo "<p>Debugging errno: " . mysqli_connect_errno() . PHP_EOL."</p>";
@@ -46,6 +45,9 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		//create table
 		echo "<table class='table table-hover' id='items'><thead>";
 		echo "<th>Edit</th>";
+    if ($info['level']==1) {
+      echo "<th>Delete</th>";
+    }
 		//create the header for each column
 		foreach ($fieldinfo as $value) {
 			echo "<th>".$value->name."</th>";
@@ -55,19 +57,18 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		while($row = mysqli_fetch_row($result)) {
 			echo "<tr>";
 			echo "<td><form method='POST' action='edit.php'><input type='hidden' name='id' value='".$row[0]."'/><button type='submit' class='btn btn-info'>Edit</button></form></td>";
-			//make each cell 
+			//make each cell
 			foreach($row as $key => $var) {
 				echo "<td>".$var."</td>";
 			}
 			echo "</tr>";
 		}
 		echo  "</tbody></table>";
-		
+
 		//free result
 		mysqli_free_result($result);
 		//close mysql connection
 		mysqli_close($con);
-
 		?>
 		</div>
 		</body>
@@ -75,10 +76,10 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 				$(document).ready(function(){
 				var original = $("#content").html();
 				$("#loader").load("header.html");
-												 
+
 				 $('#items').DataTable();
 			});
 				</script>
-				
+
 </body>
 </html>
