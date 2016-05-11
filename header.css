@@ -57,7 +57,7 @@ ul#header-items {
 
 #header ul li ul{
     position: absolute;
-    width: 7em;
+    width: 8em;
     background: #ffbf00;
     color: #000000;
     display: none;
