@@ -32,13 +32,14 @@ text-align: center;
 						echo "<p>Debugging error: " . mysqli_connect_error() . PHP_EOL."</p>";
 						exit;
 				}
-				$query0 = "INSERT INTO employee(username,hashed_pass,salt) VALUES (?,?,?)";
+				$query0 = "INSERT INTO employee(username,hashed_pass,salt,name_first,name_last,email) VALUES (?,?,?,?,?,?);";
+                $query1 = "INSERT INTO employee_has_permissions VALUES((SELECT id FROM employee where username = ?), ?);";
 							$statement0 = mysqli_stmt_init($con);
 							if (mysqli_stmt_prepare($statement0, $query0)) {
 								 $salt = mt_rand();
 								$hpass = password_hash($salt.$_POST['password'], PASSWORD_BCRYPT)  or die("bind param");
 								/* bind parameters for markers */
-								mysqli_stmt_bind_param($statement0, "ssd", $_POST["user"],$hpass,$salt);
+								mysqli_stmt_bind_param($statement0, "ssdsss", $_POST["user"],$hpass,$salt, $_POST["firstname"],$_POST["lastname"],$_POST["email"]);
 
 																				/* execute query */
 									mysqli_stmt_execute($statement0);
@@ -56,13 +57,34 @@ text-align: center;
 							$row0 = mysqli_fetch_array($result0, MYSQLI_NUM);
 							$itemid = $row0[0];
 							mysqli_stmt_close($statement0);
+                                $statement1 = mysqli_stmt_init($con);
+                                if (mysqli_stmt_prepare($statement1, $query1)) {
+							//echo $_POST["user"].$_POST["level"];
+								
+								mysqli_stmt_bind_param($statement1, "sd", $_POST["user"],$_POST["level"]);
+
+																				/* execute query */
+									mysqli_stmt_execute($statement1);
+									if(mysqli_stmt_error($statement1) != ""){
+				 
+											echo "<p>Error because of ".mysqli_stmt_error($statement1)."</p>";
+											exit;
+									}
+							}
+        	else{
+								echo "<p>".mysqli_stmt_error($statement1)."</p>";
+								
+						}
+                            $result1 = mysqli_stmt_get_result($statement1);
+							$row1 = mysqli_fetch_array($result1, MYSQLI_NUM);
+							mysqli_stmt_close($statement1);
 							
 				mysqli_close($con);
 		}
 		
 		
 		else{
-				echo "<label>Enter in a User Name:</label><input type='text' size='30' name='user'></input><br/><label>Enter in a password:</label><input type='text' size='30' name='password'/><br/><button type='submit' class='btn btn-default'>Register</button>";
+				echo "<label>First Name:</lable><input type='text' size='30' name='firstname'></input><br/><label>Last Name:</lable><input type='text' size='30' name='lastname'></input><br/><label>Username:</label><input type='text' size='30' name='user'></input><br/><label>Email:</lable><input type='text' size='30' name='email'></input><br/><label>Password:</label><input type='text' size='30' name='password'/><br/><label>Access Level:</lable><input type='text' size='30' name='level'></input><br/><button type='submit' class='btn btn-default'>Register</button>";
 				
 		}
 		?>

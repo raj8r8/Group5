@@ -25,12 +25,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
               <li>Items
                     
                     <ul class="dropdown">
-                    <?php
-                    if(($_SESSION["level"])=="1") {
-                        echo "<li><a href='add_item.php'>Admin Rocks</li>";
-                        }
-                        
-                    ?>
+        
                     <li><a href="add_item.php">Add Item</li>
                      <li><a href="transactions.php">All Transactions</a></li>
                         <li><a href="checkin.php">Check In</a></li>
@@ -50,7 +45,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
                     <ul class="dropdown">
                         
                         <li><a href='addwaiver.php'>Add Waiver</a></li>
-                        <li><a href='students.php'>View Students</a></li>
+                        <li><a href='students.php'> View Students</a></li>
                     </ul>
                     <span class="caret"></span>
                 </li>
@@ -59,6 +54,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
                     echo '<li>Employees';
                     echo '<ul class="dropdown">';
                     echo '<li><a href="register.php">New Emloyees</a></li>';
+                    echo '<li><a href="editemployee.php">Edit Permissions</a></li>';
                     echo '</ul>';
                     echo '<span class="caret"></span>';
                     echo '</li>';
