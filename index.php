@@ -21,7 +21,7 @@
 			text-align: center;
 		}
 		</style>
-		 <link href="header.php" rel="stylesheet">
+		 <link href="header.css" rel="stylesheet">
 	</head>
 	<body>
 		<div id="header">
