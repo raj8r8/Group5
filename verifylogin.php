@@ -81,7 +81,7 @@
             header("location: adminuser.php");
         }
         else if($level == '0'){
-            header("location: checkout.php");
+            header("location: home.php");
         }
         
     }

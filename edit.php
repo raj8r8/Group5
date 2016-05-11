@@ -118,7 +118,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
             </div>
         
                  <br/>
-            <input type="submit" name="submit" value="Submit">
+            <input class="btn btn-primary" type="submit" name="submit" value="Submit">
             </form>
             </div>
             </div>

@@ -77,7 +77,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 				$("#loader").load("header.html");
 												 
 				 $('#items').DataTable({
-					"order": [[ 8, "asc" ]]
+					"order": [[ 8, "desc" ]]
 				});
 			});
 		</script>

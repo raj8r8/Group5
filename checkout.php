@@ -79,6 +79,7 @@ $studentid = $_SESSION["studentid"];
             
         }
                 mysqli_close($con);
+    mail("btkvf@mail.missouri.edu", "test", "This is a test");
                 header("Location: transactions.php");
         
 }
