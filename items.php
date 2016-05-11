@@ -59,7 +59,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 			echo "<tr>";
 			echo "<td><form method='POST' action='edit.php'><input type='hidden' name='id' value='".$row[0]."'/><input type='hidden' name='name' value=".$row[1]."/><button type='submit' class='btn btn-info'>Edit</button></form></td>";
             if ($_SESSION['level'] > 0) {
-                echo "<td><form method='POST' action='deleteitem.php'><input='hidden' name='id' value='".$row[0]."'/><button type='submit' class='btn btn-danger'>Delete</button></td>";
+                echo "<td><form method='POST' action='deleteitem.php'><input type='hidden' name='id' value='".$row[0]."'/><button type='submit' class='btn btn-danger'>Delete</button></td>";
             }
 			//make each cell 
 			foreach($row as $key => $var) {
