@@ -22,9 +22,6 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 			text-align: center;
 		}
 		</style>
-		<script>
-		$("#loader").load("header.php");
-		</script>
 		</head>
 		<body>
 		<header id="loader">
@@ -75,7 +72,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		</body>
 		<script>
 		$(document).ready(function(){
-				$("#loader").load("header.html");
+				$("#loader").load("header.php");
 												 
 				 $('#items').DataTable({
 					"order": [[ 8, "asc" ]]
