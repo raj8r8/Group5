@@ -29,9 +29,6 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
                     if(($_SESSION["level"])=="1") {
                         echo "<li><a href='add_item.php'>Admin Rocks</li>";
                         }
-                    else {
-                        echo '<li><a href="add_item.php">Add Item</li>';
-                    }
                         
                     ?>
                     <li><a href="add_item.php">Add Item</li>
