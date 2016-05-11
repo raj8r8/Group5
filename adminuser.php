@@ -22,12 +22,12 @@ body {
 	if(isset($_SESSION["username"]))
 		$user_name = $_SESSION["username"];
 	if(isset($_SESSION["user_type"]))
-		$user_type = $_SESSION["user_type"];
+		$user_type = $_SESSION["level"];
 
 	if(isset($user_name))
 	{
 		// check if it is regular user
-		if($user_type == "admin")
+		if($level == "1")
 		{
 			echo "<table width='100%' align='center'>";
   			echo "<tr>";
