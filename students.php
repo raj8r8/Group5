@@ -9,7 +9,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		  <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-		<title>All Items</title>
+		<title>All Students</title>
 		<style>
 		h1{
 			text-align: center;
@@ -27,7 +27,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		<header id="loader">
 		</header>
 		<div id="content">
-		<h1>All Waivers</h1>
+		<h1>All Students</h1>
 <?php 
 		
 			$con= mysqli_connect("localhost","public","P@ssword","Project");
@@ -53,18 +53,18 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		foreach ($fieldinfo as $value) { // re-arrange array
 			if ( $value->name == "id" ) {
 				$fieldName[0] = "ID"; // 0th item
-			} else if ( $value->name == "username") {
+			} elseif ( $value->name == "username") {
 				$fieldName[4] = "Username"; // 4th item
-			} else if ( $value->name == "email") {
-				$fieldName[3] = "Username"; // 3rd item
-			} else if ( $value->name == "name_first") {
-				$fieldName[1] = "Username"; // 1st item
-			} else if ( $value->name == "name_last") {
-				$fieldName[2] = "Username"; // 2nd item
-			} else if ( $value->name == "isBanned") {
-				$fieldName[5] = "Username"; // 5th item
+			} elseif ( $value->name == "email") {
+				$fieldName[3] = "Email"; // 3rd item
+			} elseif ( $value->name == "name_first") {
+				$fieldName[1] = "First Name"; // 1st item
+			} elseif ( $value->name == "name_last") {
+				$fieldName[2] = "Last Name"; // 2nd item
+			} elseif ( $value->name == "isBanned") {
+				$fieldName[5] = "Banned"; // 5th item
 			} else {
-				array_push($fieldName, $value->name);
+				//array_push($fieldName, $value->name);
 			}
 		}
 
