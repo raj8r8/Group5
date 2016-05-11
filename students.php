@@ -9,7 +9,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		  <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-		<title>All Students</title>
+		<title>All Items</title>
 		<style>
 		h1{
 			text-align: center;
@@ -27,7 +27,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		<header id="loader">
 		</header>
 		<div id="content">
-		<h1>All Students</h1>
+		<h1>All Waivers</h1>
 <?php 
 		
 			$con= mysqli_connect("localhost","public","P@ssword","Project");
@@ -49,7 +49,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		//create the header for each column
 
 		$fieldName = array();
-
+		
 		foreach ($fieldinfo as $value) { // re-arrange array
 			if ( $value->name == "id" ) {
 				$fieldName[0] = "ID"; // 0th item
@@ -64,21 +64,19 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 			} elseif ( $value->name == "isBanned") {
 				$fieldName[5] = "Banned"; // 5th item
 			} else {
-				//array_push($fieldName, $value->name);
+				array_push($fieldName, $value->name);
 			}
 		}
-
-		foreach( $fieldName as $key => $name ) {
-			echo "<th>".$name."</th>";
+		
+		for ($i = 0; $i < sizeof($fieldName); $i++ ) {
+			echo "<th>".$fieldName[$i]."</th>";
 		}
-
-		echo "<th>ID</th>";
-
+		
 		echo "</thead><tbody>";
 		//get each row
 		while($row = mysqli_fetch_row($result)) {
 			echo "<tr>";
-			echo "<td><form method='POST' action='editStudent.php'><input type='hidden' name='id' value='".$row[0]."'/><input type='hidden' name='name' value=".$row[1]."/><input type='hidden' name='isBanned' value=".$row[5]."/><button type='submit' class='btn btn-info'>Edit</button></form></td>";
+			echo "<td><form method='POST' action='editstudent.php'><input type='hidden' name='id' value='".$row[0]."'/><input type='hidden' name='name' value=".$row[1]."/><input type='hidden' name='isBanned' value=".$row[5]."/><button type='submit' class='btn btn-info'>Edit</button></form></td>";
 			//make each cell
 
 			echo "<td>".$row[0]."</td>"; // id
@@ -111,11 +109,10 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		</body>
 		<script>
 				$(document).ready(function(){
-				var original = $("#content").html();
-				$("#loader").load("header.php");
-												 
-				$('#items').DataTable();
-			});
+					var original = $("#content").html();
+					$("#loader").load("header.php");				 
+					$('#items').DataTable();
+				});
 				</script>
 				
 </body>
