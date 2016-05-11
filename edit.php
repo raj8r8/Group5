@@ -37,7 +37,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
             <form action="item_edit.php" id="edit" method="POST">
                 <label>ID:</label><input class="form-control" type="text" name="id" readonly="readonly" value="<?=$_POST["id"]?>">
                 <br/>
-               <label>Name:</label><input class="form-control" type="text" name="name">
+               <label>Name:</label><input class="form-control" type="text" name="name" value="<?=$_POST["name"]?>">
                  <br/>
                 <label>Condition:</label>
                 <div class="row form-group">

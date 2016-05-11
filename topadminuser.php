@@ -35,7 +35,7 @@ text-align: center;
 <div class="col-md-4 col-sm-4 col-xs-3"></div>
 <div class="col-md-4 col-sm-4 col-xs-3">
 <form method='POST' action='checkout.php'>
-<h1>Administrator Page</h1>
+<h1>I'm the Captain now...</h1>
 <?php
 	// check the session variable, if exist, get them
 	if(isset($_SESSION["username"]))
@@ -45,8 +45,8 @@ text-align: center;
 
 	if(isset($user_name))
 	{
-		// check if it is regular user
-		if($level == "1")
+		// check if it is super admin user
+		if($level == "2")
 		{
 	
 

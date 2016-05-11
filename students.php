@@ -27,7 +27,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		<header id="loader">
 		</header>
 		<div id="content">
-		<h1>All Items</h1>
+		<h1>All Waivers</h1>
 <?php 
 		
 			$con= mysqli_connect("localhost","public","P@ssword","Project");
@@ -38,7 +38,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 				echo "<p>Debugging error: " . mysqli_connect_error() . PHP_EOL."</p>";
 				exit;
 			    }
-			$query = 'SELECT * FROM item_info;';
+			$query = 'SELECT * FROM student;';
 		//run the query
 		$result=mysqli_query($con,$query);
 		// Get number of columns from result
@@ -54,7 +54,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		//get each row
 		while($row = mysqli_fetch_row($result)) {
 			echo "<tr>";
-			echo "<td><form method='POST' action='edit.php'><input type='hidden' name='id' value='".$row[0]."'/><input type='hidden' name='name' value=".$row[1]."/><button type='submit' class='btn btn-info'>Edit</button></form></td>";
+			echo "<td><form method='POST' action='editStudent.php'><input type='hidden' name='id' value='".$row[0]."'/><input type='hidden' name='name' value=".$row[1]."/><input type='hidden' name='isBanned' value=".$row[5]."/><button type='submit' class='btn btn-info'>Edit</button></form></td>";
 			//make each cell 
 			foreach($row as $key => $var) {
 				echo "<td>".$var."</td>";
