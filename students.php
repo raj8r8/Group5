@@ -47,21 +47,59 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		echo "<table class='table table-hover' id='items'><thead>";
 		echo "<th>Edit</th>";
 		//create the header for each column
-		foreach ($fieldinfo as $value) {
-			echo "<th>".$value->name."</th>";
+
+		$fieldName = array();
+
+		foreach ($fieldinfo as $value) { // re-arrange array
+			if ( $value->name == "id" ) {
+				$fieldName[0] = "ID"; // 0th item
+			} else if ( $value->name == "username") {
+				$fieldName[4] = "Username"; // 4th item
+			} else if ( $value->name == "email") {
+				$fieldName[3] = "Username"; // 3rd item
+			} else if ( $value->name == "name_first") {
+				$fieldName[1] = "Username"; // 1st item
+			} else if ( $value->name == "name_last") {
+				$fieldName[2] = "Username"; // 2nd item
+			} else if ( $value->name == "isBanned") {
+				$fieldName[5] = "Username"; // 5th item
+			} else {
+				array_push($fieldName, $value->name);
+			}
 		}
+
+		foreach( $fieldName as $key => $name ) {
+			echo "<th>".$name."</th>";
+		}
+
+		echo "<th>ID</th>";
+
 		echo "</thead><tbody>";
 		//get each row
 		while($row = mysqli_fetch_row($result)) {
 			echo "<tr>";
 			echo "<td><form method='POST' action='editStudent.php'><input type='hidden' name='id' value='".$row[0]."'/><input type='hidden' name='name' value=".$row[1]."/><input type='hidden' name='isBanned' value=".$row[5]."/><button type='submit' class='btn btn-info'>Edit</button></form></td>";
-			//make each cell 
-			foreach($row as $key => $var) {
-				echo "<td>".$var."</td>";
+			//make each cell
+
+			echo "<td>".$row[0]."</td>"; // id
+			echo "<td>".$row[3]."</td>"; // first name
+			echo "<td>".$row[4]."</td>"; // last name
+			echo "<td>".$row[2]."</td>"; // email
+			echo "<td>".$row[1]."</td>"; // username
+			echo "<td>".($row[5] == 0 ? "No" : "Yes")."</td>"; // isBanned
+
+			$numOfRows = sizeof($row);
+
+			if ( $numOfRows > 6 ) { // handle remaining rows
+				for ( $i = 6; $i < $numOfRows; $i++ ) {
+					echo "<td>".$row[$i]."</td>";
+				}
 			}
+
 			echo "</tr>";
 		}
-		echo  "</tbody></table>";
+
+		echo "</tbody></table>";
 		
 		//free result
 		mysqli_free_result($result);
@@ -74,9 +112,9 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		<script>
 				$(document).ready(function(){
 				var original = $("#content").html();
-				$("#loader").load("header.php");
+				$("#loader").load("header.html");
 												 
-				 $('#items').DataTable();
+				$('#items').DataTable();
 			});
 				</script>
 				
