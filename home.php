@@ -86,7 +86,7 @@
 			</style>
 		<script>
 				$(document).ready(function(){
-						$("#header").load("header.html");
+						$("#header").load("header.php");
 				 });
 		</script>
 	</head>

@@ -74,7 +74,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		<script>
 				$(document).ready(function(){
 				var original = $("#content").html();
-				$("#loader").load("header.html");
+				$("#loader").load("header.php");
 												 
 				 $('#items').DataTable();
 			});
