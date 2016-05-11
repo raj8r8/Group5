@@ -64,7 +64,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 			} elseif ( $value->name == "isBanned") {
 				$fieldName[5] = "Banned"; // 5th item
 			} else {
-				array_push($fieldName, $value->name);
+				//array_push($fieldName, $value->name);
 			}
 		}
 
