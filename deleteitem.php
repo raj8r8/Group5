@@ -5,7 +5,7 @@ $itemid=$_POST['id'];
 $query = "DELETE FROM items WHERE id={$_POST['id']} LIMIT 1";
 
 mysql_query ($query,$link);
-
+}
 if (mysql_affected_rows() == 1) {
 
 ?>
