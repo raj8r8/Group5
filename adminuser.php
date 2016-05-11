@@ -1,16 +1,41 @@
-<!DOCTYPE>
+<?php
+session_start();
+if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if user isn't logged in
+  header("Location: ./index.php"); // go to Login page
+}
+?>
+<!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-<title>Admin</title>
-<style type="text/css">
-body {
-	background-color: #00CCFF;
+<title>Checkout</title>
+<style>
+#content{
+width: 100%;
+text-align: center;
 }
 </style>
+<script>
+    $(document).ready(function(){
+        $("#header").load("header.html");
+     });
+</script>
 </head>
-
 <body>
+<header id="header"></header>
+<style>
+  fieldset{
+    text-align: center;
+    margin: auto;
+  }
+</style>
+<div id="content">
+<div class="row">
+<div class="col-md-4 col-sm-4 col-xs-3"></div>
+<div class="col-md-4 col-sm-4 col-xs-3">
+<form method='POST' action='checkout.php'>
+<h1>Administrator Page</h1>
 <?php
 	session_start();
 	if (!isset($_SERVER['HTTPS']) || !$_SERVER['HTTPS']) { // if request is not secure, redirect to secure url
@@ -21,20 +46,15 @@ body {
 	// check the session variable, if exist, get them
 	if(isset($_SESSION["username"]))
 		$user_name = $_SESSION["username"];
-	if(isset($_SESSION["user_type"]))
-		$user_type = $_SESSION["level"];
+	if(isset($_SESSION["level"]))
+		$level = $_SESSION["level"];
 
 	if(isset($user_name))
 	{
 		// check if it is regular user
 		if($level == "1")
 		{
-			echo "<table width='100%' align='center'>";
-  			echo "<tr>";
-  	 	 	echo "<td align='right' style='color: #C15BAF; font-size: 24px;'>Welcome Admin! Press here to <a href='logout.php'>logout!</a></td>";
-  			echo "</tr>";
-			echo "</table>";
-
+	
 
 			$manage = new Manage("localhost", "root", "123456", "Project");
 			$manage->connect();
