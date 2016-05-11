@@ -22,10 +22,21 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
        <a href="home.php"><h1>Welcome to the Mizzou Item Management System</h1></a>
         </div>
             <ul id="header-items">
+<?php
+    if(($_SESSION["level"])=="2") {
+        echo '<li>Employees';
+        echo '<ul class="dropdown">';
+        echo '<li><a href="register.php">New Emloyees</a></li>';
+        echo '<li><a href="editemployee.php">Edit Permissions</a></li>';
+        echo '</ul>';
+        echo '<span class="caret"></span>';
+        echo '</li>';
+    }
+    ?>
               <li>Items
-                    
+
                     <ul class="dropdown">
-        
+
                     <li><a href="add_item.php">Add Item</li>
                      <li><a href="transactions.php">All Transactions</a></li>
                         <li><a href="checkin.php">Check In</a></li>
@@ -49,17 +60,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
                     </ul>
                     <span class="caret"></span>
                 </li>
-                <?php
-                if(($_SESSION["level"])=="2") {
-                    echo '<li>Employees';
-                    echo '<ul class="dropdown">';
-                    echo '<li><a href="register.php">New Emloyees</a></li>';
-                    echo '<li><a href="editemployee.php">Edit Permissions</a></li>';
-                    echo '</ul>';
-                    echo '<span class="caret"></span>';
-                    echo '</li>';
-                }
-                ?>
+
                 <li id="logout" class="nodropdown"><a href="logout.php">Logout</a></li>
             </ul>
         </div>
