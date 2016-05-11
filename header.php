@@ -53,7 +53,6 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
                     <ul class="dropdown">
                         
                         <li><a href='addwaiver.php'>Add Waiver</a></li>
-                        <li><a href="students.php">View Students</a></li>
                     </ul>
                     <span class="caret"></span>
                 </li>

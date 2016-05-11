@@ -195,7 +195,7 @@ $studentid = $_SESSION["studentid"];
               if (mysqli_stmt_prepare($statement3, $query3)) {
                  
                   /* bind parameters for markers */
-                  mysqli_stmt_bind_param($statement3, "d", $studentid);
+                  mysqli_stmt_bind_param($statement3, "d", $itemid);
                   
                   
                   /* execute query */
