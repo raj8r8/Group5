@@ -9,7 +9,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		  <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-		<title>All Items</title>
+		<title>All Students</title>
 		<style>
 		h1{
 			text-align: center;
@@ -27,7 +27,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		<header id="loader">
 		</header>
 		<div id="content">
-		<h1>All Waivers</h1>
+		<h1>All Students</h1>
 <?php 
 		
 			$con= mysqli_connect("localhost","public","P@ssword","Project");
