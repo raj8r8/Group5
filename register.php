@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if($_SESSION["level"] < 1){
+   header("location: home.php");
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +27,7 @@ $(document).ready(function(){
 <body>
 <header id="header"></header>
 <div id="content">
-<form method='POST' action='register.php'>
+<form method="POST" action="register.php">
 <h1>Register</h1>
 <?php
     if(!empty($_POST["user"]) && !empty($_POST["password"])){
@@ -36,7 +44,7 @@ $(document).ready(function(){
         $statement0 = mysqli_stmt_init($con);
         if (mysqli_stmt_prepare($statement0, $query0)) {
             $salt = mt_rand();
-            $hpass = password_hash($salt.$_POST['password'], PASSWORD_BCRYPT)  or die("bind param");
+            $hpass = password_hash($salt.$_POST["password"], PASSWORD_BCRYPT)  or die("bind param");
             /* bind parameters for markers */
             mysqli_stmt_bind_param($statement0, "ssdsss", $_POST["user"],$hpass,$salt, $_POST["firstname"],$_POST["lastname"],$_POST["email"]);
             
@@ -65,12 +73,42 @@ $(document).ready(function(){
     
     
     else{
-        echo "<label>First Name:</lable><input type='text' size='30' name='firstname'></input><br/><label>Last Name:</lable><input type='text' size='30' name='lastname'></input><br/><label>Username:</label><input type='text' size='30' name='user'></input><br/><label>Email:</lable><input type='text' size='30' name='email'></input><br/><label>Password:</label><input type='text' size='30' name='password'/><br/><label>Access Level:</lable><input type='text' size='30' name='level'></input><br/><button type='submit' class='btn btn-default'>Register</button>";
-        
+      ?>
+      <div class="row">
+      <div class="col-md-4 col-sm-4 col-xs-3"></div>
+      <div class="col-md-4 col-sm-4 col-xs-6" id="container">
+       <label>First Name:</label><input class="form-control" type="text" name="firstname"></input><br/><label>Last Name:</label><input class="form-control" type="text" name="lastname"></input><br/><label>Username:</label><input type="text" class="form-control" name="user"></input><br/><label>Email:</label><input class="form-control" type="text" name="email"></input><br/><label>Password:</label><input class="form-control" type="text" name="password"/><br/><label>Access Level:</label>
+      <select class="form-control" name="level">
+      <?php
+      $con= mysqli_connect("localhost","public","P@ssword","Project");
+      $query1 = "SELECT id,name FROM employee_permissions";
+              $statement1 = mysqli_stmt_init($con);
+              if (mysqli_stmt_prepare($statement1, $query1)) {
+                          
+                          /* execute query */
+                          mysqli_stmt_execute($statement1);
+                      }
+              $result1 = mysqli_stmt_get_result($statement1);
+           
+              
+              while($row1 = mysqli_fetch_array($result1, MYSQLI_NUM)){
+                          
+                          echo "<option value='".$row1[0]."'>".$row1[1]."</option>";
+                          
+                      }
+              mysqli_stmt_close($statement1);
+              mysqli_close($con);
+      ?>
+      </select>
+      <br/><button type="submit" class="btn btn-primary">Register</button>
+     <?php   
     }
     ?>
 </form>
 </div>
+</div>
+ </div>
+ </div>
 </body>
 
 

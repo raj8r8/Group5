@@ -177,6 +177,11 @@ margin: auto;
         }
         $result3= mysqli_stmt_get_result($statement3);
         $row3 = mysqli_fetch_array($result3, MYSQLI_NUM);
+        if(!isset($row3[0]) || !isset($row3[1])){
+            echo "<div class='alert alert-danger' role='alert'>There is currently no student with that id please enter in a student id that is valid</div>";
+            
+            exit;
+        }
         $_SESSION["isBanned"] = $row3[2];
         $_SESSION["sname"] = $row3[0]." ".$row3[1];
         echo "<p>Student Name: ".$row3[0]." ".$row3[1]."</p><input name='verify' class='btn btn-primary' type='submit' value='Submit'></fieldset>";

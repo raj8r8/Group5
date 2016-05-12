@@ -14,6 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <style>
 #content{
@@ -32,13 +33,16 @@ text-align: center;
 </div>
 
 <div id="content">
+<div class="row">
+<div class="col-md-4 col-sm-4 col-xs-3"></div>
+<div class="col-md-4 col-sm-4 col-xs-6" id="container">
 <h1>Login</h1>
 <form method="POST" action="verifylogin.php" id="login_form" >
 <label>Username:</label>
-<input id="username" size="30" name="username" type="text">
+<input id="username" class="form-control" size="30" name="username" type="text">
 <br/>
 <label>Password:</label>
-<input id="password" size="30" name="password" type="password">
+<input id="password" class="form-control" size="30" name="password" type="password">
 <br/>
 <select name="location">
 <?php
@@ -68,10 +72,12 @@ text-align: center;
 				mysqli_stmt_close($statement1);
 				mysqli_close($con);
 				?>
-</select><br/>
-<button type="submit">Submit</button>
+</select><br/><br/>
+<button class="btn btn-primary" type="submit">Submit</button>
 </form>
-
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>
