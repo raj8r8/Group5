@@ -42,6 +42,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
                         <li><a href="checkin.php">Check In</a></li>
                         <li><a href="checkout.php">Check Out</a></li>
                         <li><a href="overdue.php">Overdue Items</a></li>
+                        <li><a href="renew.php">Renew Item</a></li>
                         <li><a href="items.php">View All Items</a></li>
                     </ul>
                       <span class="caret"></span> 
