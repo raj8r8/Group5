@@ -44,15 +44,6 @@ text-align: center;
                 
                 /* execute query */
                 mysqli_stmt_execute($statement1);
-                if(mysqli_stmt_error($statement1) != ""){
-                  
-                  echo "<p>Error because of ".mysqli_stmt_error($statement1)."</p>";
-                  exit;
-                }
-              }
-              else{
-                echo "<p>".mysqli_stmt_error($statement1)."</p>";
-                
               }
               $result1 = mysqli_stmt_get_result($statement1);
               
@@ -63,6 +54,7 @@ text-align: center;
                 
               }
               mysqli_stmt_close($statement1);
+              mysqli_close($con);
               ?>
             </select>
           </form>

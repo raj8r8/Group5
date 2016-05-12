@@ -18,11 +18,11 @@
     
     // check the session variable, if exist, get them
     if(isset($_SESSION["username"])){
-    $user_name = $_SESSION["username"];
+        $user_name = $_SESSION["username"];
     }
     if(isset($user_name)){
-    $has_login = true;
-    $_SESSION["loggedin"] = true;
+        $has_login = true;
+        $_SESSION["loggedin"] = true;
     }
     else
     {
@@ -35,17 +35,17 @@
             or die("Connect Error " . mysqli_error($link));
             
             $sql_query = 'SELECT employee.salt, employee.hashed_pass, employee_has_permissions.permissions_id,
-             employee.username, employee.id,employee.name_first,employee.name_last
-            FROM employee 
+            employee.username, employee.id,employee.name_first,employee.name_last
+            FROM employee
             INNER JOIN employee_has_permissions
-            ON employee.id=employee_has_permissions.employee_id 
+            ON employee.id=employee_has_permissions.employee_id
             WHERE employee.username = ?';
             if($stmt = $db->prepare($sql_query)){
                 $stmt->bind_param("s", $user_name);
-             mysqli_stmt_execute($stmt);
+                mysqli_stmt_execute($stmt);
                 $result0 = mysqli_stmt_get_result($stmt);
                 $row0 = mysqli_fetch_array($result0, MYSQLI_NUM);
-
+                
             }
             $salt = $row0[0];
             $pwhash = $row0[1];
@@ -85,7 +85,7 @@
         }
         
     }
-    
+    mysqli_close($db);
     ?>
 
 <body>

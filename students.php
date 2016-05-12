@@ -109,7 +109,6 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		</body>
 		<script>
 				$(document).ready(function(){
-					var original = $("#content").html();
 					$("#loader").load("header.php");				 
 					$('#items').DataTable();
 				});
