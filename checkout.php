@@ -188,7 +188,7 @@ $studentid = $_SESSION["studentid"];
         echo "<p>Item Category Name: ".$row[2]."</p>";
         mysqli_stmt_close($statement);
         
-        $query3 = "SELECT name_first, name_last 
+        $query3 = "SELECT name_first, name_last,isBanned
         FROM student
         WHERE id = ?;";
               $statement3 = mysqli_stmt_init($con);
@@ -212,7 +212,13 @@ $studentid = $_SESSION["studentid"];
             }
               $result3= mysqli_stmt_get_result($statement3);
               $row3 = mysqli_fetch_array($result3, MYSQLI_NUM);
+               $isBanned = $row3[2];
+              if($isBanned == 0){
               echo "<p>Student Name: ".$row3[0]." ".$row3[1]."</p><input name='verify' class='btn btn-primary' type='submit' value='Submit'></fieldset>";
+             }
+            else {
+              echo "<p>Student ".$row3[0]." ".$row3[1]." is currently banned and can not check out items please try a different student</p>";
+            }
       
         $query1 = "SELECT item_condition.id FROM item_condition_update
         INNER JOIN item
