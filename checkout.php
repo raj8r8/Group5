@@ -79,7 +79,7 @@ margin: auto;
             mysqli_stmt_close($statement2);
         }
         mysqli_close($con);
-        mail("btkvf@mail.missouri.edu", "test", "This is a test");
+       
         header("Location: transactions.php");
         
     }

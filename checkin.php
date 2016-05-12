@@ -59,6 +59,12 @@ margin: auto;
         }
         mysqli_stmt_close($statement1);
         mysqli_close($con);
+        if($_SESSION["location"] == 1){
+          $location = "Student Center";
+        }else {
+          $location = "Memorial Union";
+        }
+        mail($_SESSION["semail"], "You have successfully checked in an item", "THIS EMAIL IS AUTOMATICALLY GENERATED, Please do not reply to this email. Please address any concerns, in person, to the staff at the ".$location ." check out desk. The laptop you checked out in the ".$location." has been successfully returned. Sincerely, Missouri Student Unions");
         /* Navigate to transactions.php */
         header("Location: transactions.php");
     }
@@ -95,7 +101,7 @@ margin: auto;
         $_SESSION["itemidforupdate"] = $itemid;
         mysqli_stmt_close($statement0);
         
-        $query2 = "SELECT COUNT(*),student.name_first,student.name_last
+        $query2 = "SELECT COUNT(*),student.name_first,student.name_last,student.email
         FROM student_item_transaction
         INNER JOIN student
         ON student_item_transaction.student_id = student.id
@@ -119,6 +125,7 @@ margin: auto;
         
         echo "<fieldset><p>Item Name:".$itemname."</p>";
         echo "<p>Student Name: ".$row2[1]." ".$row2[2]."</p>";
+        $_SESSION["semail"] = $row2[3];
         mysqli_stmt_close($statement2);
         $query3 = "SELECT id,name FROM item_condition";
         $statement3 = mysqli_stmt_init($con);

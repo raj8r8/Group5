@@ -70,6 +70,9 @@ width: 100%;
 .nav>li>a.btn-info:focus, .nav>li>a.btn-info:hover{
     background-color: #31b0d5 !important;
 }
+.nav>li>a.btn-danger:focus, .nav>li>a.btn-danger:hover{
+background-color: #c9302c !important; 
+}
 ul.nav.nav-pills{
 				margin-left: 30%;
     

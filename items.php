@@ -46,7 +46,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		//create table
 		echo "<table class='table table-hover' id='items'><thead>";
     echo "<th>Edit</th>";
-    if ($_SESSION['level'] > 0) {
+    if ($_SESSION["level"] > 0) {
         echo "<th>Delete</th>";
     }
 		//create the header for each column
@@ -58,8 +58,8 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		while($row = mysqli_fetch_row($result)) {
 			echo "<tr>";
 			echo "<td><form method='POST' action='edit.php'><input type='hidden' name='id' value='".$row[0]."'/><input type='hidden' name='name' value='".$row[1]."'/><button type='submit' class='btn btn-info'>Edit</button></form></td>";
-            if ($_SESSION['level'] > 0) {
-                echo "<td><form method='POST' action='deleteitem.php'><input type='hidden' name='id' value='".$row[0]."'/><button type='submit' class='btn btn-danger'>Delete</button></td>";
+            if ($_SESSION["level"] > 0) {
+                echo "<td><form method='POST' action='deleteitem.php'><input type='hidden' name='id' value='".$row[0]."'/><button type='submit' class='btn btn-danger'>Delete</button></form></td>";
             }
 			//make each cell 
 			foreach($row as $key => $var) {
