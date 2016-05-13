@@ -2,6 +2,19 @@
     if (!isset($_SERVER['HTTPS']) || !$_SERVER['HTTPS']) {
         $url = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         header('Location: ' . $url);
+        
+        if($has_login) {
+          // check the user type
+          if($level == "2"){
+            header("location: topadminuser.php");
+          }
+          else if($level == '1'){
+            header("location: adminuser.php");
+          }
+          else if($level == '0'){
+            header("location: home.php");
+          }
+        }
         //exit;
     }
     session_start();
