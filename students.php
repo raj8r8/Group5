@@ -38,7 +38,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 				echo "<p>Debugging error: " . mysqli_connect_error() . PHP_EOL."</p>";
 				exit;
 			    }
-			$query = 'SELECT * FROM student;';
+			$query = "SELECT id,username,email,name_first,name_last,isBanned FROM student;";
 		//run the query
 		$result=mysqli_query($con,$query);
 		// Get number of columns from result
