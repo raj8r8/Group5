@@ -7,7 +7,18 @@
     session_start();
     
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { // if user is logged in
-        header("Location: ./checkout.php"); // go to checkout page
+        // check the user type
+        if( $_SESSION["level"] == "2"){
+            header("Location: topadminuser.php");
+        }
+        else if( $_SESSION["level"] == '1'){
+            header("Location: adminuser.php");
+        }
+        else if( $_SESSION["level"] == '0'){
+            header("Location: home.php");
+        
+        
+    }
     }
     ?>
 <!DOCTYPE html>
@@ -36,6 +47,13 @@ text-align: center;
 <div class="row">
 <div class="col-md-4 col-sm-4 col-xs-3"></div>
 <div class="col-md-4 col-sm-4 col-xs-6" id="container">
+<?php
+if(isset($_SESSION["logininfo"])){
+    echo $_SESSION["logininfo"];
+unset($_SESSION["logininfo"]);
+    
+}
+?>
 <h1>Login</h1>
 <form method="POST" action="verifylogin.php" id="login_form" >
 <label>Username:</label>
@@ -73,7 +91,9 @@ text-align: center;
 				mysqli_close($con);
 				?>
 </select><br/><br/>
+
 <button class="btn btn-primary" type="submit">Submit</button>
+
 </form>
 </div>
 </div>

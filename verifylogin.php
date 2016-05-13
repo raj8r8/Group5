@@ -72,26 +72,15 @@
     }
     
     // to determine what part it is going to load
-    if($has_login) {
-        // check the user type
-        if($level == "2"){
-            header("location: topadminuser.php");
-        }
-        else if($level == '1'){
-            header("location: adminuser.php");
-        }
-        else if($level == '0'){
-            header("location: home.php");
-        }
-        
-    }
+
     mysqli_close($db);
     ?>
 
 <body>
 
 <?php
-    echo $login_information;
+   $_SESSION["logininfo"] = $login_information;
+header("Location: index.php");
     
     ?>
 </body>
