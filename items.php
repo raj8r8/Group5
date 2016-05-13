@@ -9,6 +9,8 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		  <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+
+
 		<title>All Items</title>
 		<style>
 		h1{
@@ -28,10 +30,10 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		</header>
 		<div id="content">
 		<h1>All Items</h1>
-<?php 
-		
+<?php
+
 			$con= mysqli_connect("localhost","public","P@ssword","Project");
-			
+
 			if (!$con) {
 				echo "<p>Error: Unable to connect to MySQL." . PHP_EOL."</p>";
 				echo "<p>Debugging errno: " . mysqli_connect_errno() . PHP_EOL."</p>";
@@ -59,16 +61,19 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 			echo "<tr>";
 			echo "<td><form method='POST' action='edit.php'><input type='hidden' name='id' value='".$row[0]."'/><input type='hidden' name='name' value='".$row[1]."'/><button type='submit' class='btn btn-info'>Edit</button></form></td>";
             if ($_SESSION["level"] > 0) {
-                echo "<td><form method='POST' action='deleteitem.php'><input type='hidden' name='id' value='".$row[0]."'/><button type='submit' class='btn btn-danger'>Delete</button></form></td>";
+                echo "<td><form method='POST'><input type='hidden' name='id' value='".$row[0]."'/><button type='submit' class='btn btn-danger'>Delete</button></form></td>";
+                if (isset($_POST['id'])) {
+                  echo "<div class='alert alert-danger' role='alert'>You are about to delete this item if you would like to delete this item please click<a href='deleteitem.php' class='alert-link'>here</a></div>";
+                }
             }
-			//make each cell 
+			//make each cell
 			foreach($row as $key => $var) {
 				echo "<td>".$var."</td>";
 			}
 			echo "</tr>";
 		}
 		echo  "</tbody></table>";
-		
+
 		//free result
 		mysqli_free_result($result);
 		//close mysql connection
@@ -80,10 +85,10 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		<script>
 				$(document).ready(function(){
 				$("#loader").load("header.php");
-												 
+
 				 $('#items').DataTable();
 			});
 				</script>
-				
+
 </body>
 </html>

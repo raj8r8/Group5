@@ -1,16 +1,28 @@
 <?php
 $link=mysqli_connect("localhost","public","P@ssword","Project");
-if(isset($_POST["id"])){
-$itemid = $_POST['id'];
+
+$itemid=$_POST["id"];
 $query = "DELETE FROM item WHERE id = ?";
 
 $statement = mysqli_stmt_init($link);
 
 if(mysqli_stmt_prepare($statement,$query)){
   mysqli_stmt_bind_param($statement,"d",$itemid);
-  mysqli_stmt_execute($statement);
-}
 
+  mysqli_stmt_execute($statement);
+  if(mysqli_stmt_error($statement) != ""){
+      echo "<p>Error because of".mysqli_stmt_error($statement)."</p>";
+  }
 }
-if (mysqli_affected_rows($statement) == 1) {
+else{
+  echo "<p>Error because of".mysqli_stmt_error($statement)."</p>";
+}
+mysqli_stmt_close($statement);
+mysqli_close($link);
+if(mysqli_stmt_error($statement)){
+  echo "unable to delete this item"
+}
+else{
+  header ("Location: ./items.php");
+}
 ?>
