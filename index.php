@@ -3,7 +3,7 @@
         $url = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         header('Location: ' . $url);
     }
-
+    
     session_start();
 
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { // if user is logged in
@@ -95,6 +95,7 @@ unset($_SESSION["logininfo"]);
 <button class="btn btn-primary" type="submit">Submit</button>
 
 </form>
+<a href="student_login.php">You a student trying to login? Click Here!. </a>
 </div>
 </div>
 </div>

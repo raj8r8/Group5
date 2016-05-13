@@ -46,6 +46,10 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 		// Get number of columns from result
 		$fieldinfo=mysqli_fetch_fields($result);
 		//create table
+		if (isset($_POST["id"])) {
+				$_SESSION["deleteid"] = $_POST["id"];
+			echo "<div class='alert alert-danger' role='alert'>You are about to delete this item if you would like to delete this item please click <a href='deleteitem.php' class='alert-link'>here</a></div>";
+		}
 		echo "<table class='table table-hover' id='items'><thead>";
     echo "<th>Edit</th>";
     if ($_SESSION["level"] > 0) {
@@ -62,10 +66,6 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 			echo "<td><form method='POST' action='edit.php'><input type='hidden' name='id' value='".$row[0]."'/><input type='hidden' name='name' value='".$row[1]."'/><button type='submit' class='btn btn-info'>Edit</button></form></td>";
             if ($_SESSION["level"] > 0) {
                 echo "<td><form method='POST'><input type='hidden' name='id' value='".$row[0]."'/><button type='submit' class='btn btn-danger'>Delete</button></form></td>";
-                if (isset($_POST["id"])) {
-                    $_SESSION["deleteid"] = $_POST["id"];
-                  echo "<div class='alert alert-danger' role='alert'>You are about to delete this item if you would like to delete this item please click <a href='deleteitem.php' class='alert-link'>here</a></div>";
-                }
             }
 			//make each cell
 			foreach($row as $key => $var) {
@@ -87,7 +87,9 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) { // if us
 				$(document).ready(function(){
 				$("#loader").load("header.php");
 
-				 $('#items').DataTable();
+				 $('#items').DataTable({
+					"order": [[ 2, "asc" ]]
+				});
 			});
 				</script>
 
