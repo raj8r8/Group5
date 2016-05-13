@@ -1,7 +1,8 @@
 <?php
+    session_start();
 $link=mysqli_connect("localhost","public","P@ssword","Project");
 
-$itemid=$_POST["id"];
+    $itemid= $_SESSION["deleteid"];
 $query = "DELETE FROM item WHERE id = ?";
 
 $statement = mysqli_stmt_init($link);
@@ -19,8 +20,9 @@ else{
 }
 mysqli_stmt_close($statement);
 mysqli_close($link);
+    unset($_SESSION["deleteid"]);
 if(mysqli_stmt_error($statement)){
-  echo "unable to delete this item"
+  echo "unable to delete this item";
 }
 else{
   header ("Location: ./items.php");
